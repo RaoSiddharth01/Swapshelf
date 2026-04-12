@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Browse from "./pages/Browse";
-import Login from "./pages/Login";
-import Sell from "./pages/Sell";
-import Profile from "./pages/Profile";
+import Home from "./temp/Home";
+import About from "./temp/About";
+import Browse from "./temp/Browse";
+import Login from "./temp/Login";
+import Sell from "./temp/Sell";
+import Profile from "./temp/Profile";
 import { Toaster } from "react-hot-toast";
 
 
