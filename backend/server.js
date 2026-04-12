@@ -11,7 +11,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://https://swapshelff.netlify.app",
+    origin: "https://swapshelff.netlify.app",
     credentials: true,
   })
 );
