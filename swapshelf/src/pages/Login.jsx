@@ -1,161 +1,16 @@
 import { useState } from "react";
 import Footer from "../components/Footer";
-import API from "../services/api"; 
+import API from "../services/api";
 import toast from "react-hot-toast";
 
 export default function Login() {
-  const [isRegister, setIsRegister] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-
-  
+  const [isRegister, setIsRegister] = useState(false); const [showPassword, setShowPassword] = useState(false);
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(""); 
   const [password, setPassword] = useState("");
-
-  
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const url = isRegister ? "/auth/register" : "/auth/login";
-
-      const { data } = await API.post(url, {
-        name,
-        email,
-        password,
-      });
-
-      console.log(data);
-
-      
-      if (!isRegister) {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user", JSON.stringify(data.user));
-      }
-
-      toast.success(
-       isRegister ? "Registered Successfully!" : "Login Successful!"
-      );
-
-    
-      if (!isRegister) {
-        window.location.href = "/";
-      }
-
-    } catch (err) {
-      console.log(err.response?.data);
-      alert(err.response?.data?.message || "Something went wrong");
-    }
-  };
-
-  return (
-  <div className="min-h-screen flex flex-col bg-gray-50">
-
-  
-    <div className="flex flex-1 items-start justify-center px-4 mt-32">
-
-      
-      <div className="w-full max-w-md bg-white shadow-2xl rounded-2xl p-8">
-
-        
-        <div className="flex mb-6 border rounded-lg overflow-hidden">
-          <button
-            onClick={() => setIsRegister(false)}
-            className={`w-1/2 py-2 transition ${
-              !isRegister
-                ? "bg-blue-500 text-white"
-                : "bg-gray-100"
-            }`}
-          >
-            Login
-          </button>
-
-          <button
-            onClick={() => setIsRegister(true)}
-            className={`w-1/2 py-2 transition ${
-              isRegister
-                ? "bg-blue-500 text-white"
-                : "bg-gray-100"
-            }`}
-          >
-            Register
-          </button>
-        </div>
-
-      
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-
-          {isRegister && (
-            <input
-              type="text"
-              placeholder="Full Name"
-              value={name} 
-              onChange={(e) => setName(e.target.value)} 
-              className="border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-            />
-          )}
-
-          <input
-            type="email"
-            placeholder="Email"
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)} 
-            className="border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-          />
-
-          <div className="relative">
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              value={password} 
-              onChange={(e) => setPassword(e.target.value)} 
-              className="border p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-            />
-            <span
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-3 cursor-pointer text-sm text-gray-500"
-            >
-              {showPassword ? "Hide" : "Show"}
-            </span>
-          </div>
-
-          {isRegister && (
-            <input
-              type="password"
-              placeholder="Confirm Password"
-              className="border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-            />
-          )}
-
-          <button className="bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition shadow-md hover:shadow-lg">
-            {isRegister ? "Register" : "Login"}
-          </button>
-
-          {!isRegister && (
-            <p className="text-sm text-right text-blue-500 cursor-pointer">
-              Forgot Password?
-            </p>
-          )}
-        </form>
-
-        
-        <p className="text-sm text-center mt-6 text-gray-500">
-          {isRegister
-            ? "Already have an account?"
-            : "New user?"}
-          <span
-            onClick={() => setIsRegister(!isRegister)}
-            className="text-blue-500 cursor-pointer ml-1"
-          >
-            {isRegister ? "Login" : "Register"}
-          </span>
-        </p>
-
-      </div>
-    </div>
-
-    
-    <Footer />
-  </div>
-);
+  const handleSubmit = async (e) => { e.preventDefault(); try { const url = isRegister ? "/auth/register" : "/auth/login"; const { data } = await API.post(url, { name, email, password }); if (!isRegister) { localStorage.setItem("token", data.token); localStorage.setItem("user", JSON.stringify(data.user)); } toast.success(isRegister ? "Registered Successfully!" : "Login Successful!"); if (!isRegister) window.location.href = "/"; } catch (err) { console.log(err.response?.data); alert(err.response?.data?.message || "Something went wrong"); } };
+  return <div className="page-shell flex min-h-screen flex-col bg-[#f7faff] text-slate-900"><main className="section-wrap flex flex-1 items-center justify-center py-14"><div className="grid w-full max-w-5xl overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-soft lg:grid-cols-[.9fr_1.1fr]">
+    <div className="relative hidden overflow-hidden bg-slate-950 p-10 text-white lg:block"><div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-blue-600/30 blur-3xl" /><div className="absolute -bottom-24 -left-10 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" /><div className="relative flex h-full flex-col justify-between"><div><p className="text-sm font-bold tracking-[.2em] text-blue-300">SWAPSHELF</p><h1 className="mt-12 text-4xl font-black leading-tight">Keep your shelf moving.</h1><p className="mt-5 max-w-sm text-sm leading-6 text-slate-400">Sign in to manage listings or create an account to start sharing books.</p></div><div className="rounded-2xl border border-white/10 bg-white/5 p-5"><p className="text-sm text-slate-300">Buy. Sell. Exchange.</p><p className="mt-1 text-xs text-slate-500">A focused experience for people who love books.</p></div></div></div>
+    <div className="p-7 sm:p-10 md:p-12"><div className="flex rounded-2xl bg-slate-100 p-1"><button onClick={()=>setIsRegister(false)} className={`flex-1 rounded-xl py-2.5 text-sm font-semibold transition ${!isRegister ? "bg-white text-slate-950 shadow-sm" : "text-slate-500"}`}>Login</button><button onClick={()=>setIsRegister(true)} className={`flex-1 rounded-xl py-2.5 text-sm font-semibold transition ${isRegister ? "bg-white text-slate-950 shadow-sm" : "text-slate-500"}`}>Register</button></div><div className="mt-8"><p className="text-sm font-bold uppercase tracking-[.16em] text-blue-600">{isRegister ? "Create account" : "Welcome back"}</p><h2 className="mt-2 text-3xl font-black tracking-tight">{isRegister ? "Join SwapShelf." : "Good to see you."}</h2><p className="mt-2 text-sm text-slate-500">{isRegister ? "Create your account and start listing books." : "Sign in to continue to your shelf."}</p></div><form onSubmit={handleSubmit} className="mt-8 space-y-4">{isRegister && <input type="text" placeholder="Full name" value={name} onChange={(e)=>setName(e.target.value)} className="input-premium" />}<input type="email" placeholder="Email address" value={email} onChange={(e)=>setEmail(e.target.value)} className="input-premium" /><div className="relative"><input type={showPassword ? "text" : "password"} placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} className="input-premium pr-16" /><button type="button" onClick={()=>setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-semibold text-blue-600">{showPassword ? "Hide" : "Show"}</button></div>{isRegister && <input type="password" placeholder="Confirm password" className="input-premium" />}<button className="btn-primary w-full py-3.5">{isRegister ? "Create account" : "Sign in"} <span>→</span></button></form>{!isRegister && <p className="mt-4 text-right text-xs font-semibold text-blue-600">Forgot password?</p>}<p className="mt-7 text-center text-sm text-slate-500">{isRegister ? "Already have an account?" : "New to SwapShelf?"}<button onClick={()=>setIsRegister(!isRegister)} className="ml-1 font-semibold text-blue-600 hover:text-blue-800">{isRegister ? "Login" : "Register"}</button></p></div>
+  </div></main><Footer /></div>;
 }

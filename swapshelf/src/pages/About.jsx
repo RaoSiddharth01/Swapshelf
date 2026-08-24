@@ -1,57 +1,9 @@
+import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
+
 export default function About() {
-  return (
-    <div
-      className="h-screen bg-cover bg-center flex items-center justify-center text-white relative"
-      style={{ backgroundImage: "url('/Aboutpic.jpg')" }}
-    >
-
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/80"></div>
-
-      <div className="relative z-10 max-w-3xl text-center px-6">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">
-          About <span className="text-blue-600">SwapShelf</span>
-        </h1>
-
-        <p className="text-lg md:text-xl mb-6 leading-relaxed">
-          SwapShelf is a smart platform designed for students to{" "}
-          <span className="text-blue-600 font-semibold">buy, sell, and exchange books</span>{" "}
-          effortlessly. Whether you're looking for affordable textbooks or want to
-          pass on books you no longer need, SwapShelf connects you with students
-          around you.
-        </p>
-
-        <p className="text-md md:text-lg mb-8 text-gray-200">
-          Our mission is simple —{" "}
-          <span className="text-blue-600">save money</span>,{" "}
-          <span className="text-blue-600">reduce waste</span>, and build a{" "}
-          <span className="text-blue-600">student-driven community</span>.
-          Instead of letting books collect dust, give them a second life while
-          helping someone else learn and grow.
-        </p>
-
-        <div className="grid md:grid-cols-3 gap-6 text-sm md:text-base">
-          <div className="bg-white/10 backdrop-blur-md p-4 rounded-lg hover:scale-105 transition">
-            <h3 className="font-semibold mt-2">Easy Listings</h3>
-            <p className="text-gray-300">Post books in seconds with images and details.</p>
-          </div>
-
-          <div className="bg-white/10 backdrop-blur-md p-4 rounded-lg hover:scale-105 transition">
-            <h3 className="font-semibold mt-2">Book Exchange</h3>
-            <p className="text-gray-300">Swap books with other students nearby.</p>
-          </div>
-
-          <div className="bg-white/10 backdrop-blur-md p-4 rounded-lg hover:scale-105 transition">
-             <h3 className="font-semibold mt-2">Affordable Learning</h3>
-            <p className="text-gray-300">Get books at lower prices than market.</p>
-          </div>
-        </div>
-
-        <div className="mt-10">
-          <button className="bg-blue-600 text-black px-6 py-3 rounded-full font-semibold hover:bg-blue-400 transition">
-            Start Swapping 
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+  const navigate = useNavigate();
+  return <div className="page-shell bg-[#f7faff] text-slate-900"><main><section className="relative overflow-hidden border-b border-blue-100 bg-white"><div className="absolute inset-0 grid-bg opacity-70" /><div className="section-wrap relative py-24 md:py-32"><div className="max-w-4xl"><p className="text-sm font-bold uppercase tracking-[.2em] text-blue-600">About SwapShelf</p><h1 className="mt-4 text-5xl font-black leading-[1.03] tracking-[-.04em] sm:text-6xl">Books should keep <span className="text-gradient">moving.</span></h1><p className="mt-7 max-w-2xl text-lg leading-8 text-slate-600">SwapShelf is a focused marketplace for students and readers who want a simpler way to buy, sell, and exchange books.</p></div><div className="mt-16 grid gap-4 md:grid-cols-3"><div className="rounded-3xl bg-slate-950 p-7 text-white"><span className="text-3xl">↗</span><h3 className="mt-8 text-xl font-bold">Less friction</h3><p className="mt-2 text-sm leading-6 text-slate-400">Keep listing and discovery straightforward.</p></div><div className="rounded-3xl border border-slate-200 bg-slate-50 p-7"><span className="text-3xl text-blue-600">◇</span><h3 className="mt-8 text-xl font-bold">More reuse</h3><p className="mt-2 text-sm leading-6 text-slate-500">Give books another reader instead of letting them sit unused.</p></div><div className="rounded-3xl border border-blue-100 bg-blue-50 p-7"><span className="text-3xl text-blue-600">⇄</span><h3 className="mt-8 text-xl font-bold">Flexible exchange</h3><p className="mt-2 text-sm leading-6 text-slate-500">Listings can support exchange when a direct swap makes more sense.</p></div></div></div></section>
+    <section className="section-wrap py-24"><div className="grid gap-14 md:grid-cols-[.8fr_1.2fr] md:items-start"><div><p className="text-sm font-bold uppercase tracking-[.18em] text-blue-600">The idea</p><h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">A small product solving a very real problem.</h2></div><div className="space-y-6 text-base leading-8 text-slate-600"><p>Books often become unused long before they stop being useful. SwapShelf makes it easier to put those books back into circulation.</p><p>Instead of filling the experience with noisy promotions or artificial claims, the product stays centred on the things that matter: a useful listing, clear details, and a simple way to connect.</p><button onClick={()=>navigate("/Browse")} className="btn-primary">Explore the shelf →</button></div></div></section>
+  </main><Footer /></div>;
 }
